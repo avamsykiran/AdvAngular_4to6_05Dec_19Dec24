@@ -11,18 +11,11 @@ import { Contact } from '../../models/contact';
 })
 export class ContactListComponent {
 
-  contacts:Contact[];
-
-  constructor(private contactService:ContactService){
-    this.contacts=[];
+  constructor(public contactService:ContactService){
+  
   }
-
-  ngOnInit(){
-    this.contacts=this.contactService.getAll();
-  }
-
+  
   del(id:number){
     this.contactService.deleteById(id);
-    this.contacts=this.contactService.getAll();
   }
 }

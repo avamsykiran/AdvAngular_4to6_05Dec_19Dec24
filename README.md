@@ -65,5 +65,24 @@ Advanced Angular 18
                 }
             }
 
+    Angular Signals
 
+        a signal is a primitive reactive unit.
+
+        a signal encapsulates a piece of data, and each time the value gets changed, all fo its
+        dependencies or subscribers are updated.
+
+        ReadWrite Signals
+
+            x = signal(0)
+
+            x()                     //the data is read
+
+            x.update( x() + 1 );    //the data is written
+
+        Computed Signals or readOnly Signals
+
+            xSquare = computed( () => Math.power(x(),2) )
+
+            
     

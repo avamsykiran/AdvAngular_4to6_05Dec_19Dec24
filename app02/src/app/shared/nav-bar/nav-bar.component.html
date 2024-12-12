@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand"> {{title || "UnTitled"}} </a>
+        @if(links && links.length>0){
+            <ul class="navbar-nav mb-2 me-auto mb-lg-0">
+                @for( link of links; track $index){
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="link.target" routerLinkActive="active" > {{link.label}} </a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</nav>

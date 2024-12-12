@@ -1,0 +1,57 @@
+<section class="col-sm-5 mx-auto p-4 border border-danger">
+
+    <h4>New Contact</h4>
+
+    <form [formGroup]="contactForm" (ngSubmit)="formSubmitted()">
+        <div class="form-control-group">
+            <label class="form-control-label">Contact Id</label>
+            <input class="form-control" type="number" formControlName="id" readonly="true" />
+        </div>
+        <div class="form-control-group">
+            <label class="form-control-label">Full Name</label>
+            <input class="form-control" type="text" formControlName="fullName" />
+            @if(fullName?.invalid && (fullName?.dirty || fullName?.touched)){
+                @if(fullName?.errors!['required']){
+                    <div>
+                        <span>Full Name can not be left blank</span>
+                    </div>
+                }
+            }
+        </div>
+        <div class="form-control-group">
+            <label class="form-control-label">Mobile Number</label>
+            <input class="form-control" type="text" formControlName="mobile" />
+            @if(mobile?.invalid && (mobile?.dirty || mobile?.touched)){
+                @if(mobile?.errors!['required']){
+                    <div>
+                        <span>Mobile Number can not be left blank</span>
+                    </div>
+                }
+                @if(mobile?.errors!['pattern']){
+                    <div>
+                        <span>Mobile Number must be a 10 digit number.</span>
+                    </div>
+                }
+            }
+        </div>
+        <div class="form-control-group">
+            <label class="form-control-label">Mail Id</label>
+            <input class="form-control" type="text" formControlName="mailId" />
+            @if(mailId?.invalid && (mailId?.dirty || mailId?.touched)){
+                @if(mailId?.errors!['required']){
+                    <div>
+                        <span>Mail Id can not be left blank</span>
+                    </div>
+                }
+                @if(mailId?.errors!['email']){
+                    <div>
+                        <span>Mail Id must be a valid email id</span>
+                    </div>
+                }
+            }
+        </div>
+        <div class="d-grid mt-1">
+            <button class="btn btn-primary" [disabled]="contactForm.invalid" >Add Contact</button>
+        </div>
+    </form>
+</section>
