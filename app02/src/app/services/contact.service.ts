@@ -1,5 +1,6 @@
 import { computed, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { Contact } from '../models/contact';
+import { MessagingService } from './messaging.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ContactService {
 
   private nextId:number; 
 
-  constructor() { 
+  constructor(private ms:MessagingService) { 
     this.contacts.set([
       {id:1,fullName:"Vamsy Kiran",mobile:"9052224753",mailId:"vamsy@gmail.com"},
       {id:2,fullName:"KGN Murthy",mobile:"9052224754",mailId:"murthy@gmail.com"},
@@ -25,13 +26,16 @@ export class ContactService {
   add(contact:Contact){
     contact.id=++this.nextId;
     this.contacts.update( list => [...list,contact] )
+    this.ms.add(`Contact is saved with id: ${contact.id}`);
   }
 
   update(contact:Contact){   
     this.contacts.update( list => list.map( c => c.id!==contact.id?c:contact ) );
+    this.ms.add(`Contact with id: ${contact.id} updated!`);
   }
 
   deleteById(id:number){
     this.contacts.update( list => list.filter( c => c.id!==id) );
+    this.ms.add(`Contact with id: ${id} deleted`);
   }
 }

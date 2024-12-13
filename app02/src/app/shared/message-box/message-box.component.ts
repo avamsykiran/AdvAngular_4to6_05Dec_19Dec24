@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MessagingService } from '../../services/messaging.service';
 
 @Component({
   selector: 'app-message-box',
@@ -9,4 +10,7 @@ import { Component } from '@angular/core';
 })
 export class MessageBoxComponent {
 
+  constructor(public ms:MessagingService){
+    
+  }
 }
