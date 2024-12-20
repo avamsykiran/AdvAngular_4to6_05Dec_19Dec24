@@ -1,0 +1,16 @@
+@if(ms.messages() && ms.messages().length>0){
+    <div class="col-sm-8 mx-auto border border-info p-2">
+        @for(m of ms.messages();track $index){
+            <div class="alert alert-info p-2 m-2 fw-bold row">
+                <div class="col">
+                    {{m}}
+                </div>
+                <div class="col-1 text-end">
+                    <button type="button" class="btn btn-sm fw-bold" (click)="ms.delete(m)">
+                        X
+                    </button>
+                </div>                
+            </div>
+        }
+    </div>
+}

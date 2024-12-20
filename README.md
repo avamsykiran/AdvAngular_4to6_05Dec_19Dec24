@@ -84,5 +84,38 @@ Advanced Angular 18
 
             xSquare = computed( () => Math.power(x(),2) )
 
-            
+    Angular State Management using NgRx
+
+        Store           is a central object that holds all the data related to the application.
+                        generally one appliction will have only one store.                      
+
+        Reducer         is the one that manages the data/state in the store. Any initialization / insertion / deletion /
+                        modification tot he state in the store is doen by the reducer.
+
+        Selector        is the one that extracts state from the store into a component.
+
+        Action          is an object that represents an operation dispatched by a component and to be handled by the reducer.
+
+        Effect          is an adapter to execute asynchronous logic liek api-calls and signal the reducer
+
+
+            Store   -----SELECTOR -------Component1
+                ↑                           |
+                |                           |
+                |                           |
+                |                           |
+                |                           ACTION
+                |                           ↓
+            REDUCER ←-----------------------|
+                ↑                           ↓
+                EFFECTS ←--------------------
+                |
+                |
+            SERVICE (rest-api calls)
+
+        ng add @ngrx/store@18.0.0
+        ng add @ngrx/effects@18.0.0
+
     
+
+                
